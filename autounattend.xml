@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+    <settings pass="windowsPE">
+        <component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <SetupUILanguage>
+                <UILanguage>en-US</UILanguage>
+            </SetupUILanguage>
+            <UILanguage>en-US</UILanguage>
+            <InputLocale>en-US</InputLocale>
+            <SystemLocale>en-US</SystemLocale>
+            <UserLocale>en-US</UserLocale>
+        </component>
+        <component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <DiskConfiguration>
+                <Disk wcm:action="add">
+                    <CreatePartitions>
+                        <CreatePartition wcm:action="add">
+                            <Order>1</Order>
+                            <Size>300</Size>
+                            <Type>Primary</Type>
+                        </CreatePartition>
+                        <CreatePartition wcm:action="add">
+                            <Extend>true</Extend>
+                            <Order>2</Order>
+                            <Type>Primary</Type>
+                        </CreatePartition>
+                    </CreatePartitions>
+                    <ModifyPartitions>
+                        <ModifyPartition wcm:action="add">
+                            <Order>1</Order>
+                            <PartitionID>1</PartitionID>
+                            <Label>System</Label>
+                            <Format>NTFS</Format>
+                            <Active>true</Active>
+                        </ModifyPartition>
+                        <ModifyPartition wcm:action="add">
+                            <Order>2</Order>
+                            <PartitionID>2</PartitionID>
+                            <Label>Windows</Label>
+                            <Letter>C</Letter>
+                            <Format>NTFS</Format>
+                        </ModifyPartition>
+                    </ModifyPartitions>
+                    <WillWipeDisk>true</WillWipeDisk>
+                    <DiskID>0</DiskID>
+                </Disk>
+            </DiskConfiguration>
+            <ImageInstall>
+                <OSImage>
+                    <InstallFrom>
+                        <MetaData wcm:action="add">
+                            <Key>/image/name</Key>
+                            <Value>Windows 10 Pro</Value>
+                        </MetaData>
+                    </InstallFrom>
+                    <InstallTo>
+                        <DiskID>0</DiskID>
+                        <PartitionID>2</PartitionID>
+                    </InstallTo>
+                </OSImage>
+            </ImageInstall>
+            <UpgradeData>
+                <Upgrade>false</Upgrade>
+            </UpgradeData>
+            <UserData>
+                <AcceptEula>true</AcceptEula>
+                <ProductKey>
+                    <Key>W269N-WFGWX-YVC9B-4J6C9-T83GX</Key>
+                </ProductKey>
+            </UserData>
+            <DynamicUpdate>
+                <Enable>true</Enable>
+                <WillShowUI>Always</WillShowUI>
+            </DynamicUpdate>
+        </component>
+    </settings>
+    <settings pass="oobeSystem">
+        <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <OOBE>
+                <VMModeOptimizations>
+                    <SkipAdministratorProfileRemoval>false</SkipAdministratorProfileRemoval>
+                </VMModeOptimizations>
+                <HideEULAPage>true</HideEULAPage>
+                <HideLocalAccountScreen>true</HideLocalAccountScreen>
+                <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+                <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+                <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+                <ProtectYourPC>3</ProtectYourPC>
+            </OOBE>
+            <UserAccounts>
+                <LocalAccounts>
+                    <LocalAccount wcm:action="add">
+                        <Password>
+                            <Value>UABhAHMAcwB3AG8AcgBkAA==</Value>
+                            <PlainText>false</PlainText>
+                        </Password>
+                        <DisplayName>admin</DisplayName>
+                        <Group>Administrators</Group>
+                        <Name>admin</Name>
+                    </LocalAccount>
+                </LocalAccounts>
+                <AdministratorPassword>
+                    <Value>QQBkAG0AaQBuAGkAcwB0AHIAYQB0AG8AcgBBAGQAbQBpAG4AaQBzAHQAcgBhAHQAbwByAFAAYQBzAHMAdwBvAHIAZAA=</Value>
+                    <PlainText>false</PlainText>
+                </AdministratorPassword>
+            </UserAccounts>
+            <FirstLogonCommands>
+                <SynchronousCommand wcm:action="add">
+                    <Description>Restart System</Description>
+                    <Order>2</Order>
+                    <RequiresUserInput>true</RequiresUserInput>
+                    <CommandLine>C:\Windows\System32\shutdown.exe /r /t 0</CommandLine>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <Order>1</Order>
+                    <Description>Perform after-installation-tasks listed in ps1 file</Description>
+                    <RequiresUserInput>true</RequiresUserInput>
+                    <CommandLine>powershell -ExecutionPolicy Bypass -File C:\setup-scripts\on-first-login.ps1</CommandLine>
+                </SynchronousCommand>
+            </FirstLogonCommands>
+        </component>
+        <component name="Microsoft-Windows-International-Core" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <InputLocale>en-US</InputLocale>
+            <SystemLocale>en-US</SystemLocale>
+            <UILanguage>en-US</UILanguage>
+            <UserLocale>en-US</UserLocale>
+        </component>
+    </settings>
+    <settings pass="specialize">
+        <component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <RunSynchronous>
+                <RunSynchronousCommand wcm:action="add">
+                    <Order>2</Order>
+                    <Path>powershell -ExecutionPolicy Bypass -File C:\setup-scripts\before-first-login.ps1</Path>
+                    <Description>Install system-wide packages</Description>
+                </RunSynchronousCommand>
+            </RunSynchronous>
+        </component>
+    </settings>
+</unattend>

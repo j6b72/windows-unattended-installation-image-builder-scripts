@@ -1,0 +1,6 @@
+/background-executables
+/working-directory
+/original-image.iso
+/modified-image.iso
+*.clg
+/setup-scripts/debloat
