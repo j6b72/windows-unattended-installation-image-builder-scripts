@@ -14,7 +14,7 @@ A little collection of scripts for creating a custom, self-installing Windows is
 
 ### Prerequisites
 - Download and install a [suitable](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install#choose-the-right-adk-for-your-scenario) version of the [Windows ADK](https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install) (only the Deployment Tools need to be selected when running the installer)
-- Acquire a Windows installation image (tested: Windows 10 21H1; windows 11 may work but is unsupported as of now)
+- Acquire a Windows installation image (tested: Windows 10 21H1; windows 11 may work but is unsupported as of now) and save it as `.\original-image.iso`
 - During the building process, multiple tools will be downloaded. If you want to build without having an internet connection (a internet connection will still be required during the installation of the final image), you can do so by downloading (and if required extracting) the following resources to their respective locations
   - [7-Zip](https://www.7-zip.org/)'s 7z.exe and 7z.dll (to `.\background-executables\7-Zip`)
   - [W4RH4WK's Debloat-Windows-10 scripts](https://github.com/W4RH4WK/Debloat-Windows-10) (to `.\setup-scripts\debloat`) 
