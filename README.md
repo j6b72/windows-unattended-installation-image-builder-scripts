@@ -27,7 +27,7 @@ A little collection of scripts for creating a custom, self-installing Windows is
 Note that image can also be built and used without any further customization.
 ### Locations worth taking a look at
 - autounattend.xml ([Answer file](https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/wsim/answer-files-overview), can be edited with a text editor or using the [Windows System Image Manager](https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/wsim/windows-system-image-manager-technical-reference))
-  - Regional settings (`amd64_Microsoft-Windows-International-Core-WinPE__neutral`, `amd64_Microsoft-Windows-International-Core__neutral`); Default: German keyboard layout, English language
+  - Regional settings (`amd64_Microsoft-Windows-International-Core-WinPE__neutral`, `amd64_Microsoft-Windows-International-Core__neutral`); Default: en-US
   - Disk Configuration (`amd64_Microsoft-Windows-Setup__neutral\Disk Configuration`)
   - Edition selection (`amd64_Microsoft-Windows-Setup__neutral\Image Install`), Product Key (`amd64_Microsoft-Windows-Setup__neutral\User Data\Key`); Default: Windows 10 Pro using a generic key
   - Scripts to be run before the first login (`amd64_Microsoft-Windows-Deployment__neutral\RunSynchronous`); Default: `.\setup-scripts\before-first-login.ps1`
